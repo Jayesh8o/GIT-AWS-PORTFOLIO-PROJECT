@@ -235,9 +235,8 @@
   /* Terminal — draggable, fixed to viewport */
   .terminal {
     position: fixed;
-    right: clamp(1rem, 4vw, 5rem);
-    top: 50%;
-    transform: translateY(-50%);
+    right: 2rem;
+    bottom: 2rem;
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -695,11 +694,11 @@
     <div class="reveal">
       <p class="contact-text">I'm actively looking for opportunities to grow as a DevOps and Cloud Engineer. Whether it's internships, collaborations, or just a conversation about tech — reach out!</p>
       <div class="contact-items">
-        <a class="contact-item" href="mailto:jayeshbhadange2004@gmail.com">
+        <a class="contact-item" href="/cdn-cgi/l/email-protection#5238332b37213a303a3336333c35376062626612353f333b3e7c313d3f">
           <div class="contact-icon">✉️</div>
           <div>
             <div class="contact-label">Email</div>
-            <div class="contact-detail">jayeshbhadange2004@gmail.com</div>
+            <div class="contact-detail"><span class="__cf_email__" data-cfemail="6309021a06100b010b0207020d04065153535723040e020a0f4d000c0e">[email&#160;protected]</span></div>
           </div>
         </a>
         <a class="contact-item" href="tel:9890208135">
@@ -729,7 +728,7 @@
   <p>© 2026 <span>Jayesh Bhadange</span> — Future Advanced DevOps Engineer</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── DRAGGABLE TERMINAL ──
   const terminal = document.getElementById('terminal');
   const bar = document.getElementById('terminalBar');
@@ -838,12 +837,3 @@
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
-      if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.style.color = link.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
-    });
-  });
-</script>
-</body>
-</html>
