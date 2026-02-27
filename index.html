@@ -232,23 +232,32 @@
     transform: translateY(-2px);
   }
 
-  /* Terminal decoration */
- .terminal {
-  position: absolute;
-  right: clamp(1rem, 4vw, 5rem);
-  top: 60%; /* moved slightly lower */
-  transform: translateY(-50%);
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  width: 300px; /* smaller width */
-  font-family: var(--mono);
-  font-size: 0.7rem; /* slightly smaller text */
-  overflow: hidden;
-  opacity: 0;
-  animation: fadeIn 1s 1s forwards;
-  display: none;
-}
+  /* Terminal — draggable, fixed to viewport */
+  .terminal {
+    position: fixed;
+    right: clamp(1rem, 4vw, 5rem);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 300px;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+    display: none;
+    z-index: 50;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .terminal.dragging {
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    border-color: var(--accent);
+    transition: none;
+  }
 
   @media (min-width: 1000px) { .terminal { display: block; } }
 
@@ -259,6 +268,19 @@
     align-items: center;
     gap: 0.5rem;
     border-bottom: 1px solid var(--border);
+    cursor: grab;
+    user-select: none;
+  }
+
+  .terminal-bar:active { cursor: grabbing; }
+
+  .drag-hint {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    color: var(--muted);
+    margin-left: 0.5rem;
+    opacity: 0.6;
+    letter-spacing: 0.05em;
   }
 
   .dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -282,9 +304,7 @@
   }
 
   /* SECTION HEADER */
-  .section-header {
-    margin-bottom: 3rem;
-  }
+  .section-header { margin-bottom: 3rem; }
 
   .section-tag {
     font-family: var(--mono);
@@ -344,10 +364,7 @@
     transition: border-color 0.2s, transform 0.2s;
   }
 
-  .stat-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-  }
+  .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
   .stat-num {
     font-size: 2rem;
@@ -399,52 +416,16 @@
   .skill-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
   .skill-card:hover::before { transform: scaleX(1); }
 
-  .skill-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
+  .skill-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+  .skill-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .skill-desc { font-size: 0.8rem; color: var(--muted); font-family: var(--mono); line-height: 1.5; }
 
-  .skill-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
+  .skill-bar-wrap { margin-top: 1rem; background: var(--bg); border-radius: 100px; height: 3px; overflow: hidden; }
+  .skill-bar { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--accent), var(--accent2)); width: 0; transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
 
-  .skill-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-family: var(--mono);
-    line-height: 1.5;
-  }
-
-  .skill-bar-wrap {
-    margin-top: 1rem;
-    background: var(--bg);
-    border-radius: 100px;
-    height: 3px;
-    overflow: hidden;
-  }
-
-  .skill-bar {
-    height: 100%;
-    border-radius: 100px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    width: 0;
-    transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  /* AI Card special badge */
-  .ai-card {
-    border-color: rgba(124, 58, 237, 0.4);
-    position: relative;
-  }
-
-  .ai-card::before {
-    background: linear-gradient(90deg, var(--accent3), var(--accent2)) !important;
-  }
-
+  /* AI Card */
+  .ai-card { border-color: rgba(124, 58, 237, 0.4); position: relative; }
+  .ai-card::before { background: linear-gradient(90deg, var(--accent3), var(--accent2)) !important; }
   .ai-card:hover { border-color: var(--accent3); }
 
   .ai-badge {
@@ -462,10 +443,7 @@
     animation: pulse-badge 2s ease-in-out infinite;
   }
 
-  @keyframes pulse-badge {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
+  @keyframes pulse-badge { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
   /* CONTACT */
   .contact-wrap {
@@ -477,13 +455,7 @@
 
   @media (max-width: 720px) { .contact-wrap { grid-template-columns: 1fr; gap: 2rem; } }
 
-  .contact-text {
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-    font-size: 1rem;
-  }
-
+  .contact-text { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 1rem; }
   .contact-items { display: flex; flex-direction: column; gap: 1rem; }
 
   .contact-item {
@@ -499,27 +471,12 @@
     transition: all 0.25s;
   }
 
-  .contact-item:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateX(6px);
-  }
+  .contact-item:hover { border-color: var(--accent); color: var(--accent); transform: translateX(6px); }
 
-  .contact-icon {
-    width: 36px; height: 36px;
-    background: var(--surface);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
+  .contact-icon { width: 36px; height: 36px; background: var(--surface); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
   .contact-detail { font-family: var(--mono); font-size: 0.8rem; }
   .contact-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
 
-  /* Social links */
   .social-links { display: flex; flex-direction: column; gap: 1rem; }
 
   .social-link {
@@ -539,14 +496,7 @@
     overflow: hidden;
   }
 
-  .social-link::after {
-    content: '→';
-    position: absolute;
-    right: 1.5rem;
-    opacity: 0;
-    transition: all 0.25s;
-  }
-
+  .social-link::after { content: '→'; position: absolute; right: 1.5rem; opacity: 0; transition: all 0.25s; }
   .social-link:hover { border-color: var(--accent); color: var(--accent); padding-right: 3rem; }
   .social-link:hover::after { opacity: 1; right: 1rem; }
 
@@ -561,7 +511,6 @@
     font-size: 0.7rem;
     color: var(--muted);
   }
-
   footer span { color: var(--accent); }
 
   /* DIVIDER */
@@ -574,33 +523,13 @@
   }
 
   /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Scrollbar */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 100px; }
@@ -609,7 +538,6 @@
 </head>
 <body>
 
-<!-- Blobs -->
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
@@ -638,31 +566,32 @@
     <a href="#contact" class="btn btn-primary">Let's Connect</a>
     <a href="#about" class="btn btn-outline">About Me</a>
   </div>
-
-  <!-- Terminal -->
-  <div class="terminal">
-    <div class="terminal-bar">
-      <span class="dot dot-r"></span>
-      <span class="dot dot-y"></span>
-      <span class="dot dot-g"></span>
-      <span class="terminal-title">jayesh@devops ~ </span>
-    </div>
-    <div class="terminal-body">
-      <div><span class="t-comment"># whoami</span></div>
-      <div style="margin-bottom:0.5rem;color:#e2e8f0;">jayesh_bhadange</div>
-      <div><span class="t-comment"># cat profile.json</span></div>
-      <div>{</div>
-      <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"DevOps Engineer"</span>,</div>
-      <div>&nbsp;&nbsp;<span class="t-key">"focus"</span>: <span class="t-str">"Cloud &amp; Automation"</span>,</div>
-      <div>&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-str">"Mumbai, IN"</span>,</div>
-      <div>&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"learning"</span>,</div>
-      <div>&nbsp;&nbsp;<span class="t-key">"ai_tools"</span>: <span class="t-val">true</span>,</div>
-      <div>&nbsp;&nbsp;<span class="t-key">"goal"</span>: <span class="t-str">"Enterprise Infra"</span></div>
-      <div>}</div>
-      <div style="margin-top:0.75rem;"><span class="t-comment">$ </span><span class="t-cursor"></span></div>
-    </div>
-  </div>
 </section>
+
+<!-- Terminal (fixed, draggable, outside section so it floats freely) -->
+<div class="terminal" id="terminal">
+  <div class="terminal-bar" id="terminalBar">
+    <span class="dot dot-r"></span>
+    <span class="dot dot-y"></span>
+    <span class="dot dot-g"></span>
+    <span class="drag-hint">⠿ drag</span>
+    <span class="terminal-title">jayesh@devops ~ </span>
+  </div>
+  <div class="terminal-body">
+    <div><span class="t-comment"># whoami</span></div>
+    <div style="margin-bottom:0.5rem;color:#e2e8f0;">jayesh_bhadange</div>
+    <div><span class="t-comment"># cat profile.json</span></div>
+    <div>{</div>
+    <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-str">"DevOps Engineer"</span>,</div>
+    <div>&nbsp;&nbsp;<span class="t-key">"focus"</span>: <span class="t-str">"Cloud &amp; Automation"</span>,</div>
+    <div>&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-str">"Mumbai, IN"</span>,</div>
+    <div>&nbsp;&nbsp;<span class="t-key">"status"</span>: <span class="t-val">"learning"</span>,</div>
+    <div>&nbsp;&nbsp;<span class="t-key">"ai_tools"</span>: <span class="t-val">true</span>,</div>
+    <div>&nbsp;&nbsp;<span class="t-key">"goal"</span>: <span class="t-str">"Enterprise Infra"</span></div>
+    <div>}</div>
+    <div style="margin-top:0.75rem;"><span class="t-comment">$ </span><span class="t-cursor"></span></div>
+  </div>
+</div>
 
 <div class="divider"></div>
 
@@ -801,7 +730,79 @@
 </footer>
 
 <script>
-  // Scroll reveal
+  // ── DRAGGABLE TERMINAL ──
+  const terminal = document.getElementById('terminal');
+  const bar = document.getElementById('terminalBar');
+
+  let isDragging = false;
+  let startX, startY, startLeft, startTop;
+
+  // Set initial position from computed style (fixed right/top via CSS)
+  function initPosition() {
+    const rect = terminal.getBoundingClientRect();
+    terminal.style.right = 'auto';
+    terminal.style.transform = 'none';
+    terminal.style.left = rect.left + 'px';
+    terminal.style.top = rect.top + 'px';
+  }
+
+  bar.addEventListener('mousedown', (e) => {
+    if (!terminal.style.left) initPosition();
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startLeft = parseInt(terminal.style.left);
+    startTop = parseInt(terminal.style.top);
+    terminal.classList.add('dragging');
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    const newLeft = Math.max(0, Math.min(window.innerWidth - terminal.offsetWidth, startLeft + dx));
+    const newTop = Math.max(0, Math.min(window.innerHeight - terminal.offsetHeight, startTop + dy));
+    terminal.style.left = newLeft + 'px';
+    terminal.style.top = newTop + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (isDragging) {
+      isDragging = false;
+      terminal.classList.remove('dragging');
+    }
+  });
+
+  // Touch support
+  bar.addEventListener('touchstart', (e) => {
+    if (!terminal.style.left) initPosition();
+    const touch = e.touches[0];
+    isDragging = true;
+    startX = touch.clientX;
+    startY = touch.clientY;
+    startLeft = parseInt(terminal.style.left);
+    startTop = parseInt(terminal.style.top);
+    terminal.classList.add('dragging');
+  }, { passive: true });
+
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    const dx = touch.clientX - startX;
+    const dy = touch.clientY - startY;
+    const newLeft = Math.max(0, Math.min(window.innerWidth - terminal.offsetWidth, startLeft + dx));
+    const newTop = Math.max(0, Math.min(window.innerHeight - terminal.offsetHeight, startTop + dy));
+    terminal.style.left = newLeft + 'px';
+    terminal.style.top = newTop + 'px';
+  }, { passive: true });
+
+  document.addEventListener('touchend', () => {
+    isDragging = false;
+    terminal.classList.remove('dragging');
+  });
+
+  // ── SCROLL REVEAL ──
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -813,7 +814,7 @@
   }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
-  // Skill bars
+  // ── SKILL BARS ──
   const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -831,14 +832,13 @@
   }, { threshold: 0.3 });
   document.querySelectorAll('.skill-card').forEach(el => skillObserver.observe(el));
 
-  // Nav active state
+  // ── NAV ACTIVE STATE ──
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
-      const top = section.offsetTop - 100;
-      if (window.scrollY >= top) current = section.getAttribute('id');
+      if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
     });
     navLinks.forEach(link => {
       link.style.color = link.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
