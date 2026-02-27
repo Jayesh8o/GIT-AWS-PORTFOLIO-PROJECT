@@ -116,8 +116,9 @@
     position: relative;
     z-index: 1;
     padding: clamp(5rem, 10vh, 8rem) clamp(1.5rem, 8vw, 10rem);
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
+    overflow: visible;
   }
 
   /* HERO */
@@ -127,6 +128,7 @@
     flex-direction: column;
     justify-content: center;
     padding-top: 70px;
+    overflow: visible;
   }
 
   .hero-tag {
@@ -141,13 +143,17 @@
   }
 
   .hero-name {
-    font-size: clamp(3.5rem, 9vw, 8rem);
+    font-size: clamp(2rem, 5.5vw, 5.5rem);
     font-weight: 800;
-    line-height: 0.95;
+    line-height: 1.05;
     letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
     opacity: 0;
     animation: fadeUp 0.7s 0.4s forwards;
+    overflow: visible;
+    white-space: nowrap;
+    width: auto;
+    max-width: 60%;
   }
 
   .hero-name .line-accent {
