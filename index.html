@@ -1,285 +1,534 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jayesh Bhadange | DevOps Engineer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family: 'Poppins', sans-serif;
-}
-
-body{
-background:#0f0f1a;
-color:white;
-overflow-x:hidden;
-}
-
-/* NAVBAR */
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 10%;
-position:fixed;
-width:100%;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-
-nav h2{
-color:#a855f7;
-font-weight:700;
-letter-spacing:1px;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:30px;
-transition:0.3s;
-}
-
-nav a:hover{
-color:#a855f7;
-}
-
-/* HERO */
-
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background:linear-gradient(135deg,#0f0f1a,#1e1b4b,#000);
-padding-top:80px;
-}
-
-.hero img{
-width:180px;
-height:180px;
-border-radius:50%;
-object-fit:cover;
-margin-bottom:25px;
-border:4px solid #a855f7;
-box-shadow:0 0 25px #a855f7;
-}
-
-.hero h1{
-font-size:3.5rem;
-font-weight:700;
-background:linear-gradient(90deg,#a855f7,#ec4899);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero h3{
-margin-top:20px;
-font-weight:300;
-color:#ccc;
-}
-
-.hero p{
-margin-top:10px;
-color:#888;
-}
-
-.hero button{
-margin-top:30px;
-padding:12px 30px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#a855f7,#ec4899);
-color:white;
-font-weight:600;
-cursor:pointer;
-transition:0.3s;
-}
-
-.hero button:hover{
-transform:scale(1.1);
-box-shadow:0 0 20px #a855f7;
-}
-
-/* SECTION */
-
-section{
-padding:100px 10%;
-text-align:center;
-}
-
-section h2{
-font-size:2.5rem;
-margin-bottom:30px;
-color:#a855f7;
-}
-
-/* ABOUT */
-
-.about p{
-max-width:800px;
-margin:auto;
-color:#ccc;
-line-height:1.8;
-}
-
-/* SKILLS */
-
-.skills-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
-margin-top:50px;
-}
-
-.skill-box{
-background:#1c1c2b;
-padding:30px;
-border-radius:15px;
-transition:0.3s;
-}
-
-.skill-box:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px #a855f7;
-}
-
-.skill-box i{
-font-size:30px;
-margin-bottom:10px;
-color:#ec4899;
-}
-
-/* CONTACT */
-
-.contact a{
-display:inline-block;
-margin:15px;
-padding:12px 25px;
-border-radius:30px;
-background:#1c1c2b;
-color:white;
-text-decoration:none;
-transition:0.3s;
-}
-
-.contact a:hover{
-background:linear-gradient(90deg,#a855f7,#ec4899);
-box-shadow:0 0 15px #a855f7;
-}
-
-/* FOOTER */
-
-footer{
-padding:20px;
-background:black;
-color:#777;
-text-align:center;
-}
-
-</style>
-</head>
-
-<body>
-
-<nav>
-<h2>Jayesh Bhadange</h2>
-<div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-
-<div class="hero">
-
-<!-- 👇 YOUR IMAGE ADDED HERE -->
-<img src="assets/img/monty.jpeg" alt="Jayesh Bhadange">
-
-<h1>Aspiring DevOps Engineer</h1>
-<h3>Cloud Engineer | DevOps & Automation Enthusiast</h3>
-<p>Mumbai, India</p>
-
-<button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-Let's Connect
-</button>
-</div>
-
-<section id="about" class="about">
-<h2>About Me</h2>
-<p>
-I am Jayesh Bhadange, an ambitious DevOps and Cloud Engineer passionate about automation, scalable infrastructure, and modern cloud technologies. 
-I continuously strengthen my foundations in Linux, Git, Bash scripting, networking, and Python while preparing to master advanced DevOps practices.
-My goal is to become a highly skilled DevOps Engineer working on enterprise-level infrastructure and cloud automation systems.
-</p>
-</section>
-
-<section id="skills">
-<h2>Technical Skills</h2>
-<div class="skills-container">
-
-<div class="skill-box">
-<i class="fab fa-linux"></i>
-<h4>Linux</h4>
-</div>
-
-<div class="skill-box">
-<i class="fab fa-git-alt"></i>
-<h4>Git & GitHub</h4>
-</div>
-
-<div class="skill-box">
-<i class="fas fa-terminal"></i>
-<h4>Bash</h4>
-</div>
-
-<div class="skill-box">
-<i class="fab fa-python"></i>
-<h4>Python</h4>
-</div>
-
-<div class="skill-box">
-<i class="fas fa-network-wired"></i>
-<h4>Networking</h4>
-</div>
-
-<div class="skill-box">
-<i class="fas fa-microchip"></i>
-<h4>Hardware</h4>
-</div>
-
-</div>
-</section>
-
-<section id="contact" class="contact">
-<h2>Connect With Me</h2>
-<p>Email: jayeshbhadange2004@gmail.com</p>
-<p>Phone: 9890208135</p>
-
-<a href="https://www.linkedin.com/in/jayesh-bhadange-5266b7299" target="_blank">
-LinkedIn
-</a>
-
-<a href="https://github.com/Jayesh8o" target="_blank">
-GitHub
-</a>
-</section>
-
-<footer>
-© 2026 Jayesh Bhadange | Future Advanced DevOps Engineer
-</footer>
-
-</body>
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Classification Game</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Fredoka', sans-serif; }
+    
+    .draggable-item {
+      cursor: grab;
+      user-select: none;
+      touch-action: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    
+    .draggable-item:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+    
+    .draggable-item.dragging {
+      opacity: 0.9;
+      cursor: grabbing;
+      transform: scale(1.05);
+      z-index: 1000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    
+    .drop-zone {
+      transition: all 0.2s ease;
+    }
+    
+    .drop-zone.drag-over {
+      transform: scale(1.02);
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.5);
+    }
+    
+    .correct-feedback {
+      animation: correctPulse 0.5s ease;
+    }
+    
+    .incorrect-feedback {
+      animation: shake 0.5s ease;
+    }
+    
+    @keyframes correctPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+    }
+    
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      animation: confetti 1s ease-out forwards;
+    }
+    
+    .progress-fill {
+      transition: width 0.5s ease;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto">
+  <div id="app-container" class="min-h-full w-full p-4 md:p-6" style="background: linear-gradient(135deg, #1a365d 0%, #2d3748 50%, #1a202c 100%);"><!-- Header -->
+   <header class="text-center mb-6">
+    <h1 id="game-title" class="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">🦁 Animal Kingdom Sorter 🐸</h1>
+    <p id="instruction-text" class="text-lg text-emerald-300">Drag each animal to the correct category!</p>
+   </header><!-- Progress Section -->
+   <div class="max-w-2xl mx-auto mb-6">
+    <div class="bg-slate-800/60 backdrop-blur rounded-2xl p-4 border border-slate-600/30">
+     <div class="flex justify-between items-center mb-2"><span class="text-white font-medium">Progress</span> <span id="score-display" class="text-emerald-400 font-bold text-lg">0 / 12</span>
+     </div>
+     <div class="h-4 bg-slate-700 rounded-full overflow-hidden">
+      <div id="progress-bar" class="progress-fill h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width: 0%"></div>
+     </div>
+     <div class="flex justify-between mt-3 text-sm"><span class="text-emerald-400">✓ Correct: <span id="correct-count">0</span></span> <span class="text-rose-400">✗ Incorrect: <span id="incorrect-count">0</span></span>
+     </div>
+    </div>
+   </div><!-- Drop Zones (Categories) -->
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-8"><!-- Mammals -->
+    <div class="drop-zone rounded-2xl p-4 min-h-48 border-2 border-dashed border-amber-400/50 bg-amber-900/30 backdrop-blur" data-category="mammals">
+     <div class="text-center mb-3"><span class="text-4xl">🐾</span>
+      <h2 class="text-xl font-bold text-amber-300 mt-1">Mammals</h2>
+      <p class="text-amber-200/70 text-sm">Warm-blooded, have fur/hair, milk</p>
+     </div>
+     <div id="mammals-zone" class="min-h-24 flex flex-wrap gap-2 justify-center items-start"></div>
+    </div><!-- Reptiles -->
+    <div class="drop-zone rounded-2xl p-4 min-h-48 border-2 border-dashed border-emerald-400/50 bg-emerald-900/30 backdrop-blur" data-category="reptiles">
+     <div class="text-center mb-3"><span class="text-4xl">🦎</span>
+      <h2 class="text-xl font-bold text-emerald-300 mt-1">Reptiles</h2>
+      <p class="text-emerald-200/70 text-sm">Cold-blooded, scales, lay eggs</p>
+     </div>
+     <div id="reptiles-zone" class="min-h-24 flex flex-wrap gap-2 justify-center items-start"></div>
+    </div><!-- Amphibians -->
+    <div class="drop-zone rounded-2xl p-4 min-h-48 border-2 border-dashed border-sky-400/50 bg-sky-900/30 backdrop-blur" data-category="amphibians">
+     <div class="text-center mb-3"><span class="text-4xl">🐸</span>
+      <h2 class="text-xl font-bold text-sky-300 mt-1">Amphibians</h2>
+      <p class="text-sky-200/70 text-sm">Live in water &amp; land, moist skin</p>
+     </div>
+     <div id="amphibians-zone" class="min-h-24 flex flex-wrap gap-2 justify-center items-start"></div>
+    </div>
+   </div><!-- Draggable Items -->
+   <div class="max-w-4xl mx-auto">
+    <div class="bg-slate-800/50 backdrop-blur rounded-2xl p-4 border border-slate-600/30">
+     <h3 class="text-white text-center mb-4 font-medium">🎯 Animals to Sort</h3>
+     <div id="items-container" class="flex flex-wrap gap-3 justify-center min-h-20"></div>
+    </div>
+   </div><!-- Feedback Toast -->
+   <div id="feedback-toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full font-bold text-lg opacity-0 transition-all duration-300 pointer-events-none z-50"></div><!-- Victory Modal -->
+   <div id="victory-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 max-w-md w-full text-center border border-emerald-500/30 shadow-2xl">
+     <div class="text-6xl mb-4 floating">
+      🏆
+     </div>
+     <h2 class="text-3xl font-bold text-white mb-2">Amazing Work!</h2>
+     <p class="text-emerald-400 text-lg mb-4">You sorted all the animals correctly!</p>
+     <div class="bg-slate-700/50 rounded-xl p-4 mb-6">
+      <p class="text-white">Final Score</p>
+      <p class="text-4xl font-bold text-emerald-400" id="final-score">12/12</p>
+      <p class="text-slate-400 text-sm mt-2">Mistakes: <span id="final-mistakes">0</span></p>
+     </div><button onclick="resetGame()" class="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg"> Play Again 🔄 </button>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Configuration
+    const defaultConfig = {
+      game_title: '🦁 Animal Kingdom Sorter 🐸',
+      instruction_text: 'Drag each animal to the correct category!',
+      primary_color: '#1a365d',
+      secondary_color: '#2d3748',
+      accent_color: '#10b981',
+      text_color: '#ffffff',
+      surface_color: '#1e293b',
+      font_family: 'Fredoka'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Game data
+    const animals = [
+      { id: 1, name: 'Lion', emoji: '🦁', category: 'mammals' },
+      { id: 2, name: 'Dolphin', emoji: '🐬', category: 'mammals' },
+      { id: 3, name: 'Elephant', emoji: '🐘', category: 'mammals' },
+      { id: 4, name: 'Bat', emoji: '🦇', category: 'mammals' },
+      { id: 5, name: 'Crocodile', emoji: '🐊', category: 'reptiles' },
+      { id: 6, name: 'Turtle', emoji: '🐢', category: 'reptiles' },
+      { id: 7, name: 'Snake', emoji: '🐍', category: 'reptiles' },
+      { id: 8, name: 'Lizard', emoji: '🦎', category: 'reptiles' },
+      { id: 9, name: 'Frog', emoji: '🐸', category: 'amphibians' },
+      { id: 10, name: 'Salamander', emoji: '🦎', category: 'amphibians', customEmoji: '🔶' },
+      { id: 11, name: 'Toad', emoji: '🐸', category: 'amphibians', customEmoji: '🟤' },
+      { id: 12, name: 'Newt', emoji: '🦎', category: 'amphibians', customEmoji: '🟠' }
+    ];
+    
+    let gameState = {
+      sorted: [],
+      correct: 0,
+      incorrect: 0,
+      draggedElement: null
+    };
+    
+    // Shuffle array
+    function shuffleArray(array) {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+    
+    // Create draggable item
+    function createDraggableItem(animal) {
+      const item = document.createElement('div');
+      item.className = 'draggable-item bg-white/95 px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-slate-800 font-medium';
+      item.draggable = true;
+      item.dataset.id = animal.id;
+      item.dataset.category = animal.category;
+      
+      const emoji = animal.customEmoji || animal.emoji;
+      item.innerHTML = `<span class="text-2xl">${emoji}</span><span>${animal.name}</span>`;
+      
+      // Drag events
+      item.addEventListener('dragstart', handleDragStart);
+      item.addEventListener('dragend', handleDragEnd);
+      
+      // Touch events for mobile
+      item.addEventListener('touchstart', handleTouchStart, { passive: false });
+      item.addEventListener('touchmove', handleTouchMove, { passive: false });
+      item.addEventListener('touchend', handleTouchEnd, { passive: false });
+      
+      return item;
+    }
+    
+    // Drag handlers
+    function handleDragStart(e) {
+      gameState.draggedElement = e.target.closest('.draggable-item');
+      gameState.draggedElement.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', gameState.draggedElement.dataset.id);
+    }
+    
+    function handleDragEnd(e) {
+      if (gameState.draggedElement) {
+        gameState.draggedElement.classList.remove('dragging');
+        gameState.draggedElement = null;
+      }
+      document.querySelectorAll('.drop-zone').forEach(zone => zone.classList.remove('drag-over'));
+    }
+    
+    // Touch handlers for mobile
+    let touchClone = null;
+    let touchStartX, touchStartY;
+    
+    function handleTouchStart(e) {
+      const item = e.target.closest('.draggable-item');
+      if (!item) return;
+      
+      e.preventDefault();
+      gameState.draggedElement = item;
+      
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      
+      // Create visual clone
+      touchClone = item.cloneNode(true);
+      touchClone.style.position = 'fixed';
+      touchClone.style.zIndex = '10000';
+      touchClone.style.pointerEvents = 'none';
+      touchClone.style.transform = 'scale(1.1)';
+      touchClone.style.opacity = '0.9';
+      touchClone.classList.add('dragging');
+      
+      const rect = item.getBoundingClientRect();
+      touchClone.style.left = rect.left + 'px';
+      touchClone.style.top = rect.top + 'px';
+      touchClone.style.width = rect.width + 'px';
+      
+      document.body.appendChild(touchClone);
+      item.style.opacity = '0.3';
+    }
+    
+    function handleTouchMove(e) {
+      if (!touchClone || !gameState.draggedElement) return;
+      e.preventDefault();
+      
+      const touch = e.touches[0];
+      const rect = gameState.draggedElement.getBoundingClientRect();
+      
+      touchClone.style.left = (touch.clientX - rect.width / 2) + 'px';
+      touchClone.style.top = (touch.clientY - rect.height / 2) + 'px';
+      
+      // Highlight drop zone under touch
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+        const zoneRect = zone.getBoundingClientRect();
+        if (touch.clientX >= zoneRect.left && touch.clientX <= zoneRect.right &&
+            touch.clientY >= zoneRect.top && touch.clientY <= zoneRect.bottom) {
+          zone.classList.add('drag-over');
+        } else {
+          zone.classList.remove('drag-over');
+        }
+      });
+    }
+    
+    function handleTouchEnd(e) {
+      if (!gameState.draggedElement) return;
+      e.preventDefault();
+      
+      const touch = e.changedTouches[0];
+      
+      // Find drop zone under touch
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+        const zoneRect = zone.getBoundingClientRect();
+        if (touch.clientX >= zoneRect.left && touch.clientX <= zoneRect.right &&
+            touch.clientY >= zoneRect.top && touch.clientY <= zoneRect.bottom) {
+          const category = zone.dataset.category;
+          handleDrop(category);
+        }
+        zone.classList.remove('drag-over');
+      });
+      
+      // Cleanup
+      if (touchClone) {
+        touchClone.remove();
+        touchClone = null;
+      }
+      if (gameState.draggedElement) {
+        gameState.draggedElement.style.opacity = '1';
+        gameState.draggedElement = null;
+      }
+    }
+    
+    // Drop zone handlers
+    function setupDropZones() {
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          zone.classList.add('drag-over');
+        });
+        
+        zone.addEventListener('dragleave', (e) => {
+          zone.classList.remove('drag-over');
+        });
+        
+        zone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          zone.classList.remove('drag-over');
+          const category = zone.dataset.category;
+          handleDrop(category);
+        });
+      });
+    }
+    
+    // Handle drop
+    function handleDrop(targetCategory) {
+      if (!gameState.draggedElement) return;
+      
+      const itemId = parseInt(gameState.draggedElement.dataset.id);
+      const correctCategory = gameState.draggedElement.dataset.category;
+      
+      if (gameState.sorted.includes(itemId)) return;
+      
+      const isCorrect = targetCategory === correctCategory;
+      
+      if (isCorrect) {
+        gameState.correct++;
+        gameState.sorted.push(itemId);
+        
+        // Move to correct zone
+        const targetZone = document.getElementById(`${targetCategory}-zone`);
+        const sortedItem = gameState.draggedElement.cloneNode(true);
+        sortedItem.classList.remove('dragging');
+        sortedItem.draggable = false;
+        sortedItem.style.cursor = 'default';
+        sortedItem.classList.add('correct-feedback');
+        sortedItem.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        sortedItem.style.color = 'white';
+        targetZone.appendChild(sortedItem);
+        
+        gameState.draggedElement.remove();
+        showFeedback(true, getRandomCorrectMessage());
+        createConfetti();
+      } else {
+        gameState.incorrect++;
+        gameState.draggedElement.classList.add('incorrect-feedback');
+        setTimeout(() => {
+          if (gameState.draggedElement) {
+            gameState.draggedElement.classList.remove('incorrect-feedback');
+          }
+        }, 500);
+        showFeedback(false, getRandomIncorrectMessage());
+      }
+      
+      updateProgress();
+      checkVictory();
+    }
+    
+    // Feedback messages
+    function getRandomCorrectMessage() {
+      const messages = ['Awesome! 🎉', 'Correct! ⭐', 'Great job! 🌟', 'Perfect! 💯', 'You got it! 🎯', 'Excellent! 🏆'];
+      return messages[Math.floor(Math.random() * messages.length)];
+    }
+    
+    function getRandomIncorrectMessage() {
+      const messages = ['Try again! 🤔', 'Not quite! 💭', 'Oops! Think again 🧐', 'Almost! Keep trying 💪'];
+      return messages[Math.floor(Math.random() * messages.length)];
+    }
+    
+    // Show feedback toast
+    function showFeedback(isCorrect, message) {
+      const toast = document.getElementById('feedback-toast');
+      toast.textContent = message;
+      toast.className = 'fixed bottom-6 left-1/2 transform -translate-x-1/2 px-6 py-3 rounded-full font-bold text-lg transition-all duration-300 z-50';
+      
+      if (isCorrect) {
+        toast.classList.add('bg-emerald-500', 'text-white');
+      } else {
+        toast.classList.add('bg-rose-500', 'text-white');
+      }
+      
+      toast.style.opacity = '1';
+      toast.style.transform = 'translate(-50%, 0)';
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translate(-50%, 20px)';
+      }, 1500);
+    }
+    
+    // Create confetti effect
+    function createConfetti() {
+      const colors = ['#10b981', '#f59e0b', '#3b82f6', '#ec4899', '#8b5cf6'];
+      for (let i = 0; i < 8; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti-piece';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = '60%';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        confetti.style.animationDelay = Math.random() * 0.3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 1500);
+      }
+    }
+    
+    // Update progress
+    function updateProgress() {
+      const total = animals.length;
+      const progress = (gameState.sorted.length / total) * 100;
+      
+      document.getElementById('score-display').textContent = `${gameState.sorted.length} / ${total}`;
+      document.getElementById('progress-bar').style.width = progress + '%';
+      document.getElementById('correct-count').textContent = gameState.correct;
+      document.getElementById('incorrect-count').textContent = gameState.incorrect;
+    }
+    
+    // Check victory
+    function checkVictory() {
+      if (gameState.sorted.length === animals.length) {
+        setTimeout(() => {
+          document.getElementById('final-score').textContent = `${gameState.correct}/${animals.length}`;
+          document.getElementById('final-mistakes').textContent = gameState.incorrect;
+          document.getElementById('victory-modal').classList.remove('hidden');
+          document.getElementById('victory-modal').classList.add('flex');
+        }, 800);
+      }
+    }
+    
+    // Reset game
+    function resetGame() {
+      gameState = {
+        sorted: [],
+        correct: 0,
+        incorrect: 0,
+        draggedElement: null
+      };
+      
+      // Clear zones
+      ['mammals', 'reptiles', 'amphibians'].forEach(cat => {
+        document.getElementById(`${cat}-zone`).innerHTML = '';
+      });
+      
+      // Hide modal
+      document.getElementById('victory-modal').classList.add('hidden');
+      document.getElementById('victory-modal').classList.remove('flex');
+      
+      // Reinitialize items
+      initializeItems();
+      updateProgress();
+    }
+    
+    // Initialize items
+    function initializeItems() {
+      const container = document.getElementById('items-container');
+      container.innerHTML = '';
+      
+      const shuffled = shuffleArray(animals);
+      shuffled.forEach(animal => {
+        container.appendChild(createDraggableItem(animal));
+      });
+    }
+    
+    // Apply config to UI
+    async function onConfigChange(cfg) {
+      document.getElementById('game-title').textContent = cfg.game_title || defaultConfig.game_title;
+      document.getElementById('instruction-text').textContent = cfg.instruction_text || defaultConfig.instruction_text;
+      
+      // Apply font
+      const fontFamily = cfg.font_family || defaultConfig.font_family;
+      document.querySelectorAll('*').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, sans-serif`;
+      });
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (cfg) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: {
+            get: () => cfg.font_family || defaultConfig.font_family,
+            set: (value) => {
+              cfg.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['game_title', cfg.game_title || defaultConfig.game_title],
+          ['instruction_text', cfg.instruction_text || defaultConfig.instruction_text]
+        ])
+      });
+    }
+    
+    // Initialize game
+    initializeItems();
+    setupDropZones();
+    updateProgress();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d46feca26337fc2',t:'MTc3MjE4ODEwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
